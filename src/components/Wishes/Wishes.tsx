@@ -33,7 +33,7 @@ export const Wishes = () => {
     <div className="z-10 text-white max-w-lg w-full h-screen">
       <div className="p-[14px] rounded-md bg-[#CC9767]/60 h-full flex flex-col">
         <h4 className="text-[24px] opacity-90 font-sansita pr-[120px]">
-          Wedding Gift
+          Wishes
         </h4>
         <p className="text-[14px] font-nunito font-normal mt-4">
           Ucapkan Selamat & Do’a Restu kepada kedua mempelai untuk hari bahagia

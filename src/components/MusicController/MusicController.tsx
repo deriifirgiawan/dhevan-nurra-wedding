@@ -1,26 +1,33 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function MusicController() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [started, setStarted] = useState(false);
 
   const startMusic = () => {
-    audioRef.current?.play();
-    setStarted(true);
+    if (!started) {
+      audioRef.current?.play().catch(() => {});
+      setStarted(true);
+    }
   };
 
-  if (!started) {
-    return (
-      <div
-        className="fixed inset-0 flex justify-center items-cente z-50 text-white text-center p-4 cursor-pointer"
-        onClick={startMusic}
-      ></div>
-    );
-  }
+  useEffect(() => {
+    const handleInteraction = () => {
+      startMusic();
+      window.removeEventListener("scroll", handleInteraction);
+      window.removeEventListener("mousemove", handleInteraction);
+    };
 
-  return (
-    <audio ref={audioRef} src="/audio/berhasil.mp3" loop={true} autoPlay />
-  );
+    window.addEventListener("scroll", handleInteraction);
+    window.addEventListener("mousemove", handleInteraction);
+
+    return () => {
+      window.removeEventListener("scroll", handleInteraction);
+      window.removeEventListener("mousemove", handleInteraction);
+    };
+  }, []);
+
+  return <audio ref={audioRef} src="/audio/berhasil.mp3" loop />;
 }

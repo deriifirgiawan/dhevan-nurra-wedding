@@ -30,14 +30,18 @@ export default function WeddingGift() {
   };
 
   return (
-    <div className="z-10 text-white max-w-lg flex flex-col justify-end w-full h-screen">
+    <div className="z-10 text-white max-w-lg flex flex-col justify-start w-full h-screen">
       <div className="p-[12px] rounded-md bg-[#CC9767]/60">
         <h4 className="text-[24px] opacity-90 font-sansita pr-[120px]">
           Wedding Gift
         </h4>
         <p className="text-[14px] font-nunito font-normal mt-4">
           Tanpa mengurangi rasa hormat kami, bagi tamu yang ingin mengirimkan
-          hadiah kepada kedua mempelai, silahkan pilih rekening di bawah ini:
+          hadiah kepada kedua mempelai, dapat melalui rekening berikut atau
+          langsung ke alamat{" "}
+          <span className="font-semibold">
+            Jl Bojong Kaler RT 03 RW 12 No 111
+          </span>
         </p>
 
         {/* Select Input + Button */}

@@ -79,7 +79,17 @@ export default function HomePage({
         {/* Section 2 */}
         <SectionContent image="/images/cover_2.jpg">
           <FullpageSection>
-            <div className="relative top-49 z-10 text-center text-white max-w-lg">
+            <div className="relative bottom-45 z-10 text-center text-white max-w-lg">
+              <div>
+                <h4 className="text-[24px] opacity-90 font-sansita">
+                  Assalamualaikum Wr.Wb
+                </h4>
+                <p className="text-[14px] font-nunito font-normal mt-4">
+                  "{Data.sambutan}"
+                </p>
+              </div>
+            </div>
+            <div className="relative top-44 z-10 text-center text-white max-w-lg">
               <div>
                 <h4 className="text-[32px] opacity-90 font-sansita">
                   {Data.name_couple}
@@ -115,7 +125,7 @@ export default function HomePage({
                 </p>
               </div>
 
-              <div className="p-[14px] rounded-md bg-[#CC9767]/60">
+              <div className="p-[14px] rounded-md bg-[#CC9767]/60 mb-[24px]">
                 <h4 className="text-[24px] opacity-90 font-sansita pr-[120px]">
                   Dhevan Putra Pamungkas
                 </h4>
@@ -180,7 +190,7 @@ export default function HomePage({
                     <p className="text-[16px] font-nunito mt-4 font-bold">
                       SABTU, 27 September 2025
                       <br />
-                      11.00 - SELESAI
+                      11.00 - 14:00
                     </p>
 
                     <p className="text-[14px] font-medium mt-2">
@@ -228,6 +238,24 @@ export default function HomePage({
         <SectionContent image="/images/cover_7.jpg">
           <FullpageSection>
             <Wishes />
+          </FullpageSection>
+        </SectionContent>
+
+        <SectionContent image="/images/test.jpg">
+          <FullpageSection>
+            <div className="relative bottom-60 z-10 text-center text-white max-w-lg">
+              <div>
+                <p className="text-[14px] font-nunito font-normal mt-4">
+                  "{Data.penutup}
+                </p>
+                <p className="text-[14px] font-nunito font-normal">
+                  Wassalamualaikum Wr.Wb"
+                </p>
+                <h4 className="text-[24px] opacity-90 font-sansita">
+                  {Data.name_couple}
+                </h4>
+              </div>
+            </div>
           </FullpageSection>
         </SectionContent>
       </div>
