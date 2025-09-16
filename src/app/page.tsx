@@ -1,103 +1,210 @@
-import Image from "next/image";
+"use client";
+import SectionContent from "@/components/SectionContent/SectionContent";
+import WeddingGift from "@/components/WeddingGift/WeddingGift";
+import { CountDate } from "@/components/CountDate";
+import { Wishes } from "@/components/Wishes";
+import Data from "@/data/data.json";
+import { FullpageSection } from "@/components/FullPageSection/FullPageSection";
+import MusicController from "@/components/MusicController/MusicController";
 
 export default function Home() {
+  const listImages = [
+    "/images/cover_1.jpg",
+    "/images/cover_2.jpg",
+    "/images/cover_3.jpg",
+    // "/images/cover_4.jpg",
+    // "/images/item_1.jpg",
+    "/images/item_2.jpg",
+    "/images/item_3.jpg",
+    "/images/item_4.jpg",
+  ];
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="font-sans min-h-screen flex items-center justify-center bg-gray-100">
+      <MusicController />
+      <div
+        className="
+        w-full h-screen bg-white
+        md:max-w-sm md:h-[720px] md:border md:border-gray-300 md:rounded-2xl md:shadow-xl md:overflow-y-auto
+      "
+      >
+        {/* Section 1 */}
+        <SectionContent image="/images/cover_1.jpg">
+          <FullpageSection>
+            <div className="relative top-40 z-10 text-center text-white max-w-lg">
+              <div>
+                <h1 className="text-3xl font-tangerine">The Wedding Of</h1>
+                <h4 className="text-[32px] opacity-90 font-sansita">
+                  {Data.name_couple}
+                </h4>
+                <p className="text-sm font-nunito mt-2 font-normal">
+                  Kepada Yth:
+                </p>
+                <p className="text-sm font-nunito font-normal">Tamu Undangan</p>
+              </div>
+              <div className="mt-4">
+                <button className="text-white uppercase font-nunito py-2 px-4 w-full bg-[#CC9767] rounded-lg">
+                  open invitation
+                </button>
+              </div>
+            </div>
+          </FullpageSection>
+        </SectionContent>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        {/* Section 2 */}
+        <SectionContent image="/images/cover_2.jpg">
+          <FullpageSection>
+            <div className="relative top-49 z-10 text-center text-white max-w-lg">
+              <div>
+                <h4 className="text-[32px] opacity-90 font-sansita">
+                  {Data.name_couple}
+                </h4>
+                <p className="text-[14px] font-nunito font-normal mt-4">
+                  "{Data.paragraph}"
+                </p>
+                <p className="text-[14px] font-nunito font-normal mt-4">
+                  {Data.surah}
+                </p>
+                <p className="text-[16px] font-nunito font-bold mt-6">
+                  27.09.2025
+                </p>
+              </div>
+            </div>
+          </FullpageSection>
+        </SectionContent>
+
+        {/* Section 3 */}
+        <SectionContent image="/images/cover_3.jpg">
+          <FullpageSection>
+            <div className="z-10 text-white max-w-lg flex flex-col justify-between w-full h-screen">
+              <div className="p-[14px] rounded-md bg-[#CC9767]/60">
+                <h4 className="text-[24px] opacity-90 font-sansita pr-[120px]">
+                  Noorazni Alsari Rahmat
+                </h4>
+
+                <p className="text-[16px] font-nunito font-normal mt-4">
+                  Putri dari:
+                </p>
+                <p className="text-[14px] font-nunito font-normal">
+                  Anak pertama dari Bapak Rachmat & Ibu Ratna Ningsih
+                </p>
+              </div>
+
+              <div className="p-[14px] rounded-md bg-[#CC9767]/60">
+                <h4 className="text-[24px] opacity-90 font-sansita pr-[120px]">
+                  Dhevan Putra Pamungkas
+                </h4>
+
+                <p className="text-[16px] font-nunito font-normal mt-4">
+                  Putra dari:
+                </p>
+                <p className="text-[14px] font-nunito font-normal">
+                  Anak ketiga dari Bapak Pendi Rospendi & Ibu Imas Masriah
+                </p>
+              </div>
+            </div>
+          </FullpageSection>
+        </SectionContent>
+
+        {/* Section 4 */}
+        <SectionContent image="/images/cover_4.jpg">
+          <FullpageSection>
+            <div className="z-10 text-white max-w-lg p-[14px] rounded-md bg-[#CC9767]/60 w-full h-screen">
+              <div className="mt-8">
+                <h1 className="text-[32px] font-tangerine">Wedding Event</h1>
+
+                <div className="mt-2">
+                  <h4 className="text-[32px] opacity-90 font-sansita pr-[120px]">
+                    Akad Nikah
+                  </h4>
+
+                  <div className="mt-2">
+                    <p className="text-[16px] font-nunito mt-4 font-bold">
+                      SABTU, 27 September 2025
+                      <br />
+                      08.00 - SELESAI
+                    </p>
+
+                    <p className="text-[14px] font-medium mt-2">
+                      JL. Terusan Cikutra Baru No. 24 - 26 (Balai RW 04)
+                    </p>
+                  </div>
+
+                  <div className="mt-4 bg-[#D9D9D9] w-full h-[163px] rounded-md overflow-hidden">
+                    <iframe
+                      title="Lokasi Acara"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.123456!2d107.630000!3d-6.900000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6b3f2a1e2d7%3A0xabcdef123456!2sJl.%20Terusan%20Cikutra%20Baru%20No.30%2C%20Bandung!5e0!3m2!1sid!2sid!4v1690000000000!5m2!1sid!2sid"
+                      width="100%"
+                      height="400"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <div className="mt-2">
+                  <h4 className="text-[32px] opacity-90 font-sansita pr-[120px]">
+                    Resepsi
+                  </h4>
+
+                  <div className="mt-2">
+                    <p className="text-[16px] font-nunito mt-4 font-bold">
+                      SABTU, 27 September 2025
+                      <br />
+                      11.00 - SELESAI
+                    </p>
+
+                    <p className="text-[14px] font-medium mt-2">
+                      JL. Terusan Cikutra Baru No. 24 - 26 (Balai RW 04)
+                    </p>
+                  </div>
+
+                  {/* <div className="mt-4 bg-[#D9D9D9] w-full h-[65px] rounded-md"></div> */}
+                  <CountDate />
+                </div>
+              </div>
+            </div>
+          </FullpageSection>
+        </SectionContent>
+
+        {/* Section 5 */}
+        <SectionContent image="/images/cover_5.jpg">
+          <FullpageSection>
+            <div className="z-10 text-white max-w-lg p-[14px] rounded-md bg-[#CC9767]/60 w-full h-screen">
+              <h4 className="text-[32px] opacity-90 font-sansita text-center">
+                Our Gallery
+              </h4>
+
+              <div className="grid grid-cols-2 gap-2 mt-2">
+                {listImages.map((item, index) => (
+                  <img
+                    alt={item}
+                    src={item}
+                    key={index}
+                    className="bg-[#D9D9D9] w-full h-[175px] rounded-md bg-contain"
+                  />
+                ))}
+              </div>
+            </div>
+          </FullpageSection>
+        </SectionContent>
+
+        {/* Section 6 */}
+        <SectionContent image="/images/item_4.jpg">
+          <FullpageSection>
+            <WeddingGift />
+          </FullpageSection>
+        </SectionContent>
+
+        <SectionContent image="/images/cover_7.jpg">
+          <FullpageSection>
+            <Wishes />
+          </FullpageSection>
+        </SectionContent>
+      </div>
     </div>
   );
 }
