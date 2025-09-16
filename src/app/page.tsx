@@ -178,13 +178,13 @@ export default function Home() {
                 Our Gallery
               </h4>
 
-              <div className="grid grid-cols-2 gap-2 mt-2">
+              <div className="grid grid-cols-2 gap-2 mt-12">
                 {listImages.map((item, index) => (
                   <img
                     alt={item}
                     src={item}
                     key={index}
-                    className="bg-[#D9D9D9] w-full h-[175px] rounded-md bg-contain"
+                    className="bg-[#D9D9D9] w-full h-[175px] rounded-md object-cover"
                   />
                 ))}
               </div>
