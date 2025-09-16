@@ -57,7 +57,7 @@ export default function WeddingGift() {
                 BCA - 8320392013 (Dhevan Putra)
               </SelectItem>
               <SelectItem value="9938078235">
-                BCA - 9938078235 (Dhevan Putra)
+                Permata - 9938078235 (Dhevan Putra)
               </SelectItem>
             </SelectContent>
           </Select>

@@ -1,10 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import SectionContent from "@/components/SectionContent/SectionContent";
 import WeddingGift from "@/components/WeddingGift/WeddingGift";
 import { CountDate } from "@/components/CountDate";
 import { Wishes } from "@/components/Wishes";
 import Data from "@/data/data.json";
+import ListPeople from "@/data/list.json";
+import { notFound } from "next/navigation";
 import { FullpageSection } from "@/components/FullPageSection/FullPageSection";
 import MusicController from "@/components/MusicController/MusicController";
 
@@ -14,17 +16,29 @@ export default function HomePage({
   params: Promise<{ name: string }>;
 }) {
   const { name } = React.use(params);
-  console.log(name);
+
+  useEffect(() => {
+    const allowed = ListPeople.list.some((person) => person.name === name);
+
+    if (!allowed) {
+      notFound();
+    }
+  }, [name]);
   const listImages = [
     "/images/cover_1.jpg",
     "/images/cover_2.jpg",
     "/images/cover_3.jpg",
-    // "/images/cover_4.jpg",
-    // "/images/item_1.jpg",
     "/images/item_2.jpg",
     "/images/item_3.jpg",
     "/images/item_4.jpg",
   ];
+
+  const scrollToNext = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
   return (
     <div className="font-sans min-h-screen flex items-center justify-center bg-gray-100">
       <MusicController />
@@ -51,7 +65,10 @@ export default function HomePage({
                 </p>
               </div>
               <div className="mt-4">
-                <button className="text-white uppercase font-nunito py-2 px-4 w-full bg-[#CC9767] rounded-lg">
+                <button
+                  onClick={() => scrollToNext()}
+                  className="text-white uppercase font-nunito py-2 px-4 w-full bg-[#CC9767] rounded-lg"
+                >
                   open invitation
                 </button>
               </div>
@@ -187,13 +204,13 @@ export default function HomePage({
                 Our Gallery
               </h4>
 
-              <div className="grid grid-cols-2 gap-2 mt-2">
+              <div className="grid grid-cols-2 gap-2 mt-12">
                 {listImages.map((item, index) => (
                   <img
                     alt={item}
                     src={item}
                     key={index}
-                    className="bg-[#D9D9D9] w-full h-[175px] rounded-md bg-contain"
+                    className="bg-[#D9D9D9] w-full h-[175px] rounded-md object-cover"
                   />
                 ))}
               </div>
