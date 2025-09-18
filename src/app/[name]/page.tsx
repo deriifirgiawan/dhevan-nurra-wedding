@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SectionContent from "@/components/SectionContent/SectionContent";
 import WeddingGift from "@/components/WeddingGift/WeddingGift";
 import { CountDate } from "@/components/CountDate";
@@ -17,6 +17,8 @@ export default function HomePage({
   params: Promise<{ name: string }>;
 }) {
   const { name } = React.use(params);
+
+  const [isOpened, setIsOpened] = useState(false);
 
   useEffect(() => {
     const allowed = ListPeople.list.some((person) => person.name === name);
@@ -45,20 +47,26 @@ export default function HomePage({
   ];
 
   const scrollToNext = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
+    setIsOpened(true); // unlock scroll
+    const container = document.getElementById("main-container");
+    if (container) {
+      container.scrollTo({
+        top: window.innerHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
     <div className="font-sans min-h-screen flex items-center justify-center bg-gray-100">
       <MusicController />
       <div
-        className="
-        w-full h-screen bg-white
-        md:max-w-sm md:h-[720px] md:border md:border-gray-300 md:rounded-2xl md:shadow-xl md:overflow-y-auto
-      "
+        id="main-container"
+        className={`
+          w-full h-screen bg-white
+          md:max-w-sm md:h-[720px] md:border md:border-gray-300 md:rounded-2xl md:shadow-xl
+          ${!isOpened ? "overflow-hidden" : "overflow-y-auto"}
+        `}
       >
         {/* Section 1 */}
         <SectionContent image="/images/cover_1.jpg">
