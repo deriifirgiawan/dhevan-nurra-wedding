@@ -1,33 +1,40 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import moment from "moment";
+
+interface Wish {
+  name: string;
+  message: string;
+  createdAt: string;
+}
 
 export const Wishes = () => {
-  const [form, setForm] = useState({
-    name: "",
-    description: "",
-  });
-  // Dummy comments
-  const comments = [
-    {
-      name: "Noorazni Alsari",
-      message: "Selamat menempuh hidup baru, semoga bahagia selalu!",
-    },
-    {
-      name: "Dhevan Putra",
-      message: "Semoga langgeng dan penuh cinta sampai akhir hayat!",
-    },
-    {
-      name: "Nurra Rahmat",
-      message: "Doa terbaik untuk kalian berdua, sukses selalu!",
-    },
-    {
-      name: "Rachmat & Ratna",
-      message: "Selamat berbahagia, semoga menjadi keluarga sakinah!",
-    },
-  ];
+  const [form, setForm] = useState({ name: "", description: "" });
+  const [comments, setComments] = useState<Wish[]>([]);
+
+  useEffect(() => {
+    fetch("/api/wishes")
+      .then((res) => res.json())
+      .then((data) => setComments(data));
+  }, []);
+
+  const handleSubmit = async () => {
+    if (!form.name || !form.description) return;
+
+    const res = await fetch("/api/wishes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: form.name, message: form.description }),
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      setComments((prev) => [...prev, data.wish]);
+      setForm({ name: "", description: "" });
+    }
+  };
 
   return (
     <div className="z-10 text-white max-w-lg w-full h-screen">
@@ -40,7 +47,6 @@ export const Wishes = () => {
           mereka melalui kolom berikut:
         </p>
 
-        {/* Form Input */}
         <div className="mt-4">
           <Input
             className="bg-white text-black"
@@ -56,10 +62,11 @@ export const Wishes = () => {
               setForm({ ...form, description: val.target.value })
             }
           />
-          <Button className="mt-4">Kirim</Button>
+          <Button className="mt-4" onClick={handleSubmit}>
+            Kirim
+          </Button>
         </div>
 
-        {/* Dummy Comment List */}
         <div className="mt-6 flex-1 overflow-y-auto">
           <h5 className="text-[16px] font-sansita mb-2">Ucapan Tamu:</h5>
           <div className="space-y-3">
@@ -70,6 +77,9 @@ export const Wishes = () => {
               >
                 <p className="font-bold font-nunito">{comment.name}</p>
                 <p className="font-nunito text-sm mt-1">{comment.message}</p>
+                <p className="text-xs text-gray-500 mt-1">
+                  {moment(comment.createdAt).format("MM/DD/YYYY HH:mm")}
+                </p>
               </div>
             ))}
           </div>

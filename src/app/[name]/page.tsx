@@ -9,6 +9,7 @@ import ListPeople from "@/data/list.json";
 import { notFound } from "next/navigation";
 import { FullpageSection } from "@/components/FullPageSection/FullPageSection";
 import MusicController from "@/components/MusicController/MusicController";
+import Gallery from "@/components/Gallery/Gallery";
 
 export default function HomePage({
   params,
@@ -24,6 +25,16 @@ export default function HomePage({
       notFound();
     }
   }, [name]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log("scroll position:", window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const listImages = [
     "/images/cover_1.jpg",
     "/images/cover_2.jpg",
@@ -39,6 +50,7 @@ export default function HomePage({
       behavior: "smooth",
     });
   };
+
   return (
     <div className="font-sans min-h-screen flex items-center justify-center bg-gray-100">
       <MusicController />
@@ -79,16 +91,6 @@ export default function HomePage({
         {/* Section 2 */}
         <SectionContent image="/images/cover_2.jpg">
           <FullpageSection>
-            <div className="relative bottom-45 z-10 text-center text-white max-w-lg">
-              <div>
-                <h4 className="text-[24px] opacity-90 font-sansita">
-                  Assalamualaikum Wr.Wb
-                </h4>
-                <p className="text-[14px] font-nunito font-normal mt-4">
-                  "{Data.sambutan}"
-                </p>
-              </div>
-            </div>
             <div className="relative top-44 z-10 text-center text-white max-w-lg">
               <div>
                 <h4 className="text-[32px] opacity-90 font-sansita">
@@ -112,6 +114,14 @@ export default function HomePage({
         <SectionContent image="/images/cover_3.jpg">
           <FullpageSection>
             <div className="z-10 text-white max-w-lg flex flex-col justify-between w-full h-screen">
+              <div className="text-center">
+                <h4 className="text-[24px] opacity-90 font-sansita">
+                  Assalamualaikum Wr.Wb
+                </h4>
+                <p className="text-[14px] font-nunito font-normal mt-4">
+                  "{Data.sambutan}"
+                </p>
+              </div>
               <div className="p-[14px] rounded-md bg-[#CC9767]/60">
                 <h4 className="text-[24px] opacity-90 font-sansita pr-[120px]">
                   Noorazni Alsari Rahmat
@@ -125,7 +135,7 @@ export default function HomePage({
                 </p>
               </div>
 
-              <div className="p-[14px] rounded-md bg-[#CC9767]/60 mb-[24px]">
+              <div className="p-[14px] rounded-md bg-[#CC9767]/60 mb-[16px]">
                 <h4 className="text-[24px] opacity-90 font-sansita pr-[120px]">
                   Dhevan Putra Pamungkas
                 </h4>
@@ -197,8 +207,6 @@ export default function HomePage({
                       JL. Terusan Cikutra Baru No. 24 - 26 (Balai RW 04)
                     </p>
                   </div>
-
-                  {/* <div className="mt-4 bg-[#D9D9D9] w-full h-[65px] rounded-md"></div> */}
                   <CountDate />
                 </div>
               </div>
@@ -213,17 +221,7 @@ export default function HomePage({
               <h4 className="text-[32px] opacity-90 font-sansita text-center">
                 Our Gallery
               </h4>
-
-              <div className="grid grid-cols-2 gap-2 mt-12">
-                {listImages.map((item, index) => (
-                  <img
-                    alt={item}
-                    src={item}
-                    key={index}
-                    className="bg-[#D9D9D9] w-full h-[175px] rounded-md object-cover"
-                  />
-                ))}
-              </div>
+              <Gallery listImages={listImages} />
             </div>
           </FullpageSection>
         </SectionContent>
