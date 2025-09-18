@@ -21,14 +21,6 @@ export default function HomePage({
   const [isOpened, setIsOpened] = useState(false);
 
   useEffect(() => {
-    const allowed = ListPeople.list.some((person) => person.name === name);
-
-    if (!allowed) {
-      notFound();
-    }
-  }, [name]);
-
-  useEffect(() => {
     const handleScroll = () => {
       console.log("scroll position:", window.scrollY);
     };

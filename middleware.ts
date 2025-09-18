@@ -9,19 +9,6 @@ export function middleware(req: NextRequest) {
     return NextResponse.rewrite(new URL("/404", req.url));
   }
 
-  if (pathname.startsWith("/")) {
-    const segments = pathname.split("/").filter(Boolean);
-    const name = decodeURIComponent(segments[0] || "");
-
-    const allowed = ListPeople.list.some(
-      (person: { name: string }) => person.name === name
-    );
-
-    if (!allowed) {
-      return NextResponse.rewrite(new URL("/404", req.url));
-    }
-  }
-
   return NextResponse.next();
 }
 
